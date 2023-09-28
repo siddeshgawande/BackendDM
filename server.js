@@ -22,6 +22,6 @@ app.use('/product', routerProduct)
 app.use('/order', routerOrder)
 app.use('/cart', routerCart)
 
-app.listen(process.env.PORT || 5000,() => {
+app.listen(process.env.PORT || 5962,() => {
   console.log('Server started at port 5000')
 })
