@@ -8,9 +8,7 @@ const app = express()
 // used for logging on the console
 app.use(morgan('combined'))
 app.use(express.json())
-app.use(cors({
-  origin:"https://backenddm-production.up.railway.app"
-}))
+app.use(cors('*'))
 app.use(express.static('uploads'))
 
 // add the routers
@@ -24,6 +22,6 @@ app.use('/product', routerProduct)
 app.use('/order', routerOrder)
 app.use('/cart', routerCart)
 
-app.listen(5962, '0.0.0.0' ,() => {
+app.listen(process.env.PORT || 5000,() => {
   console.log('Server started at port 5000')
 })
