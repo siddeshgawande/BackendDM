@@ -8,7 +8,9 @@ const app = express()
 // used for logging on the console
 app.use(morgan('combined'))
 app.use(express.json())
-app.use(cors('*'))
+app.use(cors({
+  origin:"https://backenddm-production.up.railway.app"
+}))
 app.use(express.static('uploads'))
 
 // add the routers
