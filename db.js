@@ -1,18 +1,16 @@
 const mysql = require('mysql2')
+require("dotenv").config();
 
-const pool = mysql.createPool({
-  user: process.env.DB_USERNAME,
-  password:process.env.DB_PASSWORD,
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  database: process.env.DATABASE,
-  waitForConnections: true,
-  connectionLimit: 10,
-  maxIdle: 10,
-  idleTimeout: 60000,
-  queueLimit: 0,
-  enableKeepAlive: true,
-  keepAliveInitialDelay: 0,
-})
+const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQLDATABASE}`
+// mysql://root:ehT9oP2bWwmz6XzmzRiC@containers-us-west-106.railway.app:5962/railway
+const pool = mysql.createPool(
+  // user: process.env.DB_USERNAME,
+  // password:process.env.DB_PASSWORD,
+  // host: process.env.DB_HOST,
+  // port: process.env.DB_PORT,
+  // database: process.env.DATABASE,
+  urlDB
+
+)
 
 module.exports = pool
